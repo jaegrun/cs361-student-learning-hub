@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Task List{% endblock %}
+{% block content %}
+<section class="task-list-section">
+    <h2>Task List</h2>
+    {% if tasks %}
+    <table class="task-table">
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Snippet</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{ task.name }}</td>
+                <td>{{ task.snippet or '—' }}</td>
+                <td>{{ task.category }}</td>
+                <td>
+                    <a href="{{ url_for('delete_task', task_id=task.id) }}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="empty-state">No tasks yet. <a href="{{ url_for('add_task_step1') }}">Add your first task</a>.</p>
+    {% endif %}
+    <div class="tip-box" aria-label="Tip about deleting tasks">
+        <strong>TIP:</strong> Use the Delete button next to a task when you have finished it. Clearing completed items from your list keeps the list manageable and helps you focus on what’s left to do.
+    </div>
+</section>
+{% endblock %}

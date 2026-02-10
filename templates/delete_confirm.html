@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Confirm Delete{% endblock %}
+{% block content %}
+<section class="delete-confirm">
+    <h2>Confirm Delete</h2>
+    <p class="confirm-message">Are you sure you want to delete <strong>{{ task.name }}</strong>? (y/n)</p>
+    <form method="post" action="{{ url_for('delete_task', task_id=task.id) }}" class="confirm-form">
+        <input type="hidden" name="confirm" value="y">
+        <button type="submit" class="btn btn-danger">Yes, delete</button>
+    </form>
+    <p class="confirm-actions">
+        <a href="{{ url_for('task_list') }}" class="btn btn-outline">No, cancel</a>
+    </p>
+</section>
+{% endblock %}

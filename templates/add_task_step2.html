@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Add Task — Step 2{% endblock %}
+{% block content %}
+<section class="add-task-form">
+    <h2>Add Task — Step 2 of 2</h2>
+    <p class="step-desc">Choose a <strong>category</strong> for your task.</p>
+    <div class="step1-summary">
+        <p><strong>Task:</strong> {{ name }}</p>
+        {% if snippet %}<p><strong>Snippet:</strong> {{ snippet }}</p>{% endif %}
+    </div>
+    <form method="post" action="{{ url_for('add_task_step2') }}" class="form">
+        <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text" id="category" name="category" value="General"
+                   placeholder="e.g. Homework, Reading, Project">
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save Task</button>
+            <a href="{{ url_for('add_task_step1') }}" class="btn btn-outline">← Back to Step 1</a>
+        </div>
+    </form>
+</section>
+{% endblock %}
