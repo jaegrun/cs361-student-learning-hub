@@ -5,12 +5,13 @@
     <h2>Task List</h2>
     {% if tasks %}
     <table class="task-table">
+        <caption class="sr-only">List of current study tasks with actions</caption>
         <thead>
             <tr>
-                <th>Task Name</th>
-                <th>Snippet</th>
-                <th>Category</th>
-                <th>Actions</th>
+                <th scope="col">Task Name</th>
+                <th scope="col">Snippet</th>
+                <th scope="col">Category</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
