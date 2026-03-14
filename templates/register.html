@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<section class="auth-page">
+    <h2>Create an Account</h2>
+    <p class="auth-intro">
+        This page sends your registration from the main app to the User Registration
+        microservice (running in a separate process) and displays the result.
+    </p>
+    <div class="auth-card">
+        <form method="post" action="{{ url_for('register_page') }}" class="form-vertical">
+            <label>
+                Username (at least 3 characters)
+                <input type="text" name="username" value="{{ username or '' }}" placeholder="Username" required minlength="3">
+            </label>
+            <label>
+                Password (at least 8 characters)
+                <input type="password" name="password" placeholder="Password" required minlength="8">
+            </label>
+            <label>
+                Email (optional)
+                <input type="email" name="email" value="{{ email or '' }}" placeholder="you@example.com">
+            </label>
+            <button type="submit" class="btn btn-primary">Register via Microservice</button>
+        </form>
+        <p class="auth-footer">Already have an account? <a href="{{ url_for('login_page') }}">Sign in</a>.</p>
+    </div>
+</section>
+{% endblock %}

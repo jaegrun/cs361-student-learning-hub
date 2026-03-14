@@ -7,5 +7,11 @@
         <a href="{{ url_for('add_task_step1') }}" class="btn btn-primary">Add Task</a>
         <a href="{{ url_for('task_list') }}" class="btn btn-secondary">View Task List</a>
     </nav>
+    {% if streak_info %}
+    <p class="microservice-note">
+        Current study streak (default user): <strong>{{ streak_info.current_streak }}</strong> day(s),
+        best streak: <strong>{{ streak_info.best_streak }}</strong> day(s).
+    </p>
+    {% endif %}
 </section>
 {% endblock %}

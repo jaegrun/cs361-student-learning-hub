@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Task Dashboard{% endblock %}
+{% block content %}
+<section class="stats-section">
+    <h2>Task Statistics</h2>
+    {% if error %}
+    <p class="flash flash-error">{{ error }}</p>
+    {% elif stats %}
+    <div class="stats-cards">
+        <div class="stat-card">
+            <span class="stat-value">{{ stats.total_items }}</span>
+            <span class="stat-label">Total tasks</span>
+        </div>
+    </div>
+    {% if stats.get('category_breakdown') %}
+    <h3>Tasks by category</h3>
+    <ul class="stats-breakdown">
+        {% for category, count in stats.category_breakdown.items() %}
+        <li><strong>{{ category }}</strong>: {{ count }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% else %}
+    <p class="empty-state">No statistics to show. Add tasks to see a breakdown.</p>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Settings{% endblock %}
+{% block content %}
+<section class="settings-section">
+    <h2>Settings</h2>
+    <p class="subtitle">Preferences are stored by the User Preferences microservice.</p>
+    <form method="post" action="{{ url_for('settings_page') }}" class="settings-form">
+        <div class="form-group">
+            <label for="theme">Theme</label>
+            <select id="theme" name="theme" class="form-control">
+                <option value="light" {{ 'selected' if preferences.get('theme') == 'light' else '' }}>Light</option>
+                <option value="dark" {{ 'selected' if preferences.get('theme') == 'dark' else '' }}>Dark</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="items_per_page">Tasks per page</label>
+            <select id="items_per_page" name="items_per_page" class="form-control">
+                <option value="10" {{ 'selected' if preferences.get('items_per_page') == '10' else '' }}>10</option>
+                <option value="25" {{ 'selected' if preferences.get('items_per_page') == '25' else '' }}>25</option>
+                <option value="50" {{ 'selected' if preferences.get('items_per_page') == '50' else '' }}>50</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</section>
+{% endblock %}
